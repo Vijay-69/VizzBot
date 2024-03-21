@@ -20,7 +20,7 @@ export const Sidebar = () => {    // sidebar is used in layout in root
 
         {
             icon: Plus,
-            href: "https://www.nita.ac.in/",
+            href: '/companion/new',
             label : "Create",
             pro : true,
        },
