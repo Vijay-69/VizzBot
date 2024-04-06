@@ -46,7 +46,7 @@ const formSchema = z.object({
     message: "Name is required.",
   }),
   description: z.string().min(1, {
-    message: "Name is required.",
+    message: "Description is required.",
   }),
   instructions: z.string().min(200, {
     message: "Instructions require at least 250 characters so as to function properly.",
@@ -100,6 +100,7 @@ export const CompanionForm = ({
        toast({
         variant: "destructive",
         description : "Success",
+        duration: 3000,
       });
 
       router.refresh();
@@ -109,6 +110,7 @@ export const CompanionForm = ({
       toast({
         variant: "destructive",
         description : "Something Went Wrong, bro",
+        duration: 3000,
       });
     }
   }
@@ -260,5 +262,5 @@ export const CompanionForm = ({
         </form>
       </Form>
     </div>
-  )
+  );
 };

@@ -1,4 +1,5 @@
 import prismadb from "@/lib/prismadb";
+import { checkSubscription } from "@/lib/subscription";
 import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
@@ -25,10 +26,18 @@ export async function PATCH(
         return new NextResponse("Missing required fields", { status: 400 });
       };
 
+      const isPro = await checkSubscription();
+
+      if(!isPro)
+        {
+          return new NextResponse("Missing Required Fields",{status: 403});
+        }
+
+
       const companion = await prismadb.companion.update({
         where: {
             id : params.companionId,
-            userId: user.id
+            userId: user.id,
         },
         data: {
           categoryId,
@@ -47,7 +56,7 @@ export async function PATCH(
       console.log("[COMPANION_PATCH]", error);
       return new NextResponse("Internal Error", { status: 500 });
     }
-  }
+  };
 
   export async function DELETE(
     request: Request,
@@ -74,6 +83,6 @@ export async function PATCH(
          console.log("[Companion_Delete]",error);
          return new NextResponse("Internal error",{status:500});
     }
-  }
+  };
   
   

@@ -66,5 +66,5 @@ export const ChatMessages = ({
     
     <div ref = {scrollRef}/>
     </div>
-  )
-}
+  );
+};

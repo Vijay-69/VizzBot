@@ -1,14 +1,29 @@
 "use client";
+import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
 import { Home, Plus, Settings } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-    
+interface SidebarPro {
+    isPro: boolean;
+};   
 
-export const Sidebar = () => {    // sidebar is used in layout in root
+
+export const Sidebar = ({
+    isPro
+}:SidebarPro) => {    // sidebar is used in layout in root
       
     const pathname = usePathname();
     const router = useRouter();
+    const proModal = useProModal();
+
+    const onNavigate = (url:string , pro:boolean) => {
+        if(pro && !isPro){
+         return proModal.onOpen();
+        }
+ 
+         return router.push(url); 
+        }
     
     const routes = [
         {
@@ -34,11 +49,7 @@ export const Sidebar = () => {    // sidebar is used in layout in root
 
        ];
 
-       const onNavigate = (url:string , pro:boolean) => {
-        // TODO: Check if pro
-
-        return router.push(url); 
-       }
+      
       
     return (
     <div className="space-y-4 flex flex-col h-full text-primary bg-secondary">
@@ -61,5 +72,5 @@ export const Sidebar = () => {    // sidebar is used in layout in root
       
     </div>
     
-)
-}
+);
+};
