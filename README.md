@@ -1,2 +1,3 @@
 VizzBot is a amazing chat app modelled and facilitated with power of AI.
-![Screenshot 2024-09-08 at 16-46-55 ChatGPT](https://github.com/user-attachments/assets/aec5dd0c-1270-413d-80ca-9e514ca13880)
+
+![Screenshot 2024-09-08 200806](https://github.com/user-attachments/assets/76252677-5165-4bd7-b333-37d0b8feb214)
